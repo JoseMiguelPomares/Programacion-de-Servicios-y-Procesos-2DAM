@@ -8,7 +8,5 @@ public class Main {
         Thread thread = new Thread(new Contador());
 
         thread.start();
-        if (myScan.nextLine() == "")
-            thread.stop();
     }
 }

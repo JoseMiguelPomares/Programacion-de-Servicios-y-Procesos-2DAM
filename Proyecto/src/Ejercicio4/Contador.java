@@ -1,11 +1,13 @@
 package Ejercicio4;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Contador implements Runnable {
     @Override
     public void run(){
         Thread thread = Thread.currentThread();
+        Scanner myScan = new Scanner(System.in);
         Random random = new Random();
         int num = random.nextInt(10, 20);
 
@@ -16,16 +18,20 @@ public class Contador implements Runnable {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            while (i <= 5){
+            if (i <= 5){
                 System.out.println(i);
             }
-            if (!thread.isAlive()){
-                if (i == num)
-                    System.out.println("Lo has conseguido");
-                else if (i < num)
-                    System.out.println("Vuelve ha intentarlo, has detenido el contador en " + i);
-                else
-                    System.out.println("Se ha pasado el contador");
+            if (i == num && myScan.nextLine() == "") {
+                System.out.println("Lo has conseguido");
+                thread.stop();
+            }
+            else if (i < num && myScan.nextLine() == "") {
+                System.out.println("Vuelve ha intentarlo, has detenido el contador en " + i);
+                thread.stop();
+            }
+            else if (i > num) {
+                System.out.println("Se ha pasado el contador");
+                thread.stop();
             }
         }
 
