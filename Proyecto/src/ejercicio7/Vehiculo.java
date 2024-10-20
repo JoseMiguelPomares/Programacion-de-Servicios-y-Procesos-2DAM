@@ -8,7 +8,6 @@ public class Vehiculo {
     public void ensamblarMotor(Motor motor) {
         if(carroceria != null){
             this.motor = motor;
-            
         } else {
             System.out.println("Error, no se puede ensamblar el motor sin carrocería");
         }

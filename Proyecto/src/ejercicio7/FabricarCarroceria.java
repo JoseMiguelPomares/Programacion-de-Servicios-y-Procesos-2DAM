@@ -21,5 +21,6 @@ public class FabricarCarroceria implements Runnable {
 
         System.out.println("FM: Ensamblando carrocería");
         vehiculo.ensamblarCarroceria(c);
+        vehiculo.notify();
     }
 }
