@@ -29,6 +29,7 @@ public class FabricarMotor implements Runnable {
             }
             System.out.println("FM: Ensamblando motor");
             vehiculo.ensamblarMotor(m);
+            vehiculo.notify();
         }
     }
 }

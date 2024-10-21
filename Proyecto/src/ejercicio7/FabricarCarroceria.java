@@ -20,7 +20,9 @@ public class FabricarCarroceria implements Runnable {
         System.out.println("FC: Carrocería fabricada");
 
         System.out.println("FM: Ensamblando carrocería");
-        vehiculo.ensamblarCarroceria(c);
-        vehiculo.notify();
+        synchronized (vehiculo){
+            vehiculo.ensamblarCarroceria(c);
+            vehiculo.notify();
+        }
     }
 }
