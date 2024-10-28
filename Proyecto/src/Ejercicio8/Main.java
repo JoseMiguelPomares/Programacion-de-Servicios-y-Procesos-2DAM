@@ -8,7 +8,8 @@ public class Main {
         int intesidadCafe = 1;
 
         Thread pc = new Thread(new  ProducirCapsulas(variedadCafe, intesidadCafe));
-
+        Thread com = new Thread(new Consumidor());
         pc.start();
+        com.start();
     }
 }

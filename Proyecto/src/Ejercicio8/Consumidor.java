@@ -4,15 +4,25 @@ public class Consumidor implements Runnable{
 
     @Override
     public void run() {
-        Capsula c = new Capsula();
-        synchronized (c){
-            if (ProducirCapsulas.contenedor == 6) {
+        System.out.println("HOLA");
+        synchronized (ProducirCapsulas.contenedor){
+            System.out.println("HOLA 2");
+            System.out.println(ProducirCapsulas.contenedor.size());
+            while (ProducirCapsulas.contenedor.size() >= 6) {
                 System.out.println("Creando caja con 6 capsulas");
-                ProducirCapsulas.contenedor = 0;
+                for (int i = 0; i < 6; i++) {
+                    ProducirCapsulas.contenedor.remove(i);
+                }
                 System.out.println("Caja creada");
             }
-            c.notify();
+            try {
+                System.out.println("ESPERO");
+                ProducirCapsulas.contenedor.wait();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
-
     }
+
+
 }
