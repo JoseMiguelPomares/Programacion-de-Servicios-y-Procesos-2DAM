@@ -15,14 +15,14 @@ public class Consumidor implements Runnable{
                 }
                 System.out.println("Caja creada");
             }
-            try {
-                System.out.println("ESPERO");
-                ProducirCapsulas.contenedor.wait();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            while (ProducirCapsulas.contenedor.size() < 6) {
+                try {
+                    System.out.println("Esperando a que haya 6 capsulas");
+                    ProducirCapsulas.contenedor.wait();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     }
-
-
 }
