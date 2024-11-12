@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Capturador {
+public class Capturador implements Runnable {
     private String directorio;
     private int numCaptura = 0;
 
@@ -17,7 +17,7 @@ public class Capturador {
         this.directorio = directorio;
     }
 
-    public void RealizaCaptura(){
+    public void run(){
         Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         try {
             BufferedImage capture = new Robot().createScreenCapture(screenRect);
