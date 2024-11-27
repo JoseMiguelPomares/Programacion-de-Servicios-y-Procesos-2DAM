@@ -9,16 +9,16 @@ namespace Ejercicio11
     class Cocinero
     {
 
-        public Caldo PrepararCaldo()
+        public async Task<Caldo> PrepararCaldo()
         {
             Console.WriteLine("Preparando caldo...");
-            Task.Delay(5000).Wait();
+            await Task.Delay(5000);
             Caldo c = new Caldo();
             Console.WriteLine("Caldo preparado.");
             return c;
         }
 
-        public void CalentarPaella(Paella p)
+        public async Task CalentarPaella(Paella p)
         {
             Console.WriteLine("Caletando aceite en la paella...");
             Task.Delay(2000).Wait();
@@ -26,7 +26,7 @@ namespace Ejercicio11
             Console.WriteLine("Aceite caliente.");
         }
 
-        public void SofreirIngredientes(Paella p, List<string> i)
+        public async Task SofreirIngredientes(Paella p, List<string> i)
         {
             if (p.AñadirIngredientes(i))
             {
