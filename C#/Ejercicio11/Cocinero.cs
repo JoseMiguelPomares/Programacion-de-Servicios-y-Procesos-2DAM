@@ -21,7 +21,7 @@ namespace Ejercicio11
         public async Task CalentarPaella(Paella p)
         {
             Console.WriteLine("Caletando aceite en la paella...");
-            Task.Delay(2000).Wait();
+            await Task.Delay(2000);
             p.Caliente = true;
             Console.WriteLine("Aceite caliente.");
         }
@@ -31,7 +31,7 @@ namespace Ejercicio11
             if (p.AñadirIngredientes(i))
             {
                 Console.WriteLine("Sofriendo ingredientes...");
-                Task.Delay(3000).Wait();
+                await Task.Delay(3000);
                 Console.WriteLine("Ingredientes sofritos.");
             }
         }
