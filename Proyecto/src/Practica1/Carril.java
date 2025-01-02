@@ -1,4 +1,8 @@
 package Practica1;
 
-public class Carril {
+public class Carril implements Runnable {
+    @Override
+    public void run(){
+
+    }
 }
